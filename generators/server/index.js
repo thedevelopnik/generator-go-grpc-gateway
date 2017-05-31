@@ -4,12 +4,12 @@ const generators = require('yeoman-generator')
 const chalk = require('chalk')
 const yosay = require('yosay')
 
-const GoServiceGen = generators.Base.extend({
-    prompting: function prompter() {
+module.exports = class extends Generator {
+    prompting() {
         const helloOne = chalk.magenta("'ALLO 'ALLO\n")
         const helloTwo = chalk.yellow('Welcome to the Branded Go Service Generator')
-        console.log(yosay(`${helloOne}${helloTwo}`))
-        console.log(chalk.red("Hey! You're doing this in $GOPATH/src/jaxf-fanatics.github.corp/apparel riiiiiight?'"))
+        this.log(yosay(`${helloOne}${helloTwo}`))
+        this.log(chalk.red("Hey! You're doing this in $GOPATH/src/jaxf-fanatics.github.corp/apparel riiiiiight?'"))
         return this.prompt([{
             type: 'input',
             name: 'name',
@@ -20,9 +20,9 @@ const GoServiceGen = generators.Base.extend({
             this.log('App name: ', answers.name)
             this.config.save()
         })
-    },
+    }
 
-    writing: function creator() {
+    writing() {
         const name = this.config.get('name')
         // copy ssl
         this.copy('certs/test/Makefile', './certs/test/Makefile')
@@ -86,11 +86,9 @@ const GoServiceGen = generators.Base.extend({
             this.destinationPath('./main.go'),
             { appname: name }
         )
-    },
-
-    end: function goodbye() {
-        console.log(chalk.magenta('Thank you for using the generator. Happy coding!'))
     }
-})
 
-module.exports = GoServiceGen
+    end() {
+        this.log(chalk.magenta('Thank you for using the generator. Happy coding!'))
+    }
+}
