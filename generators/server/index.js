@@ -23,13 +23,15 @@ module.exports = class extends Generator {
     }
 
     writing() {
+        this.log(this.destinationRoot())
+        this.log(this.sourceRoot())
         const name = this.config.get('name')
         // copy ssl
-        this.fs.copy('certs/test/Makefile', './certs/test/Makefile')
+        this.fs.copy(this.templatePath('certs/test/Makefile'), './certs/test/Makefile')
         // copy protocol
-        this.fs.copy('protocol/hello.pb.go', './protocol/hello.pb.go')
-        this.fs.copy('protocol/hello.pb.gw.go', './protocol/hello.pb.gw.go')
-        this.fs.copy('protocol/hello.proto', './protocol/hello.proto')
+        this.fs.copy(this.templatePath('protocol/hello.pb.go'), './protocol/hello.pb.go')
+        this.fs.copy(this.templatePath('protocol/hello.pb.gw.go'), './protocol/hello.pb.gw.go')
+        this.fs.copy(this.templatePath('protocol/hello.proto'), './protocol/hello.proto')
         // copy server
         this.fs.copyTpl(
             this.templatePath('server/rpc.defs.go'),
@@ -47,25 +49,25 @@ module.exports = class extends Generator {
             { appname: name }
         ),
         // copy swagger
-        this.fs.copy('swagger/favicon-16x16.png', './swagger/favicon-16x16.png'),
-        this.fs.copy('swagger/favicon-32x32.png', './swagger/favicon-32x32.png'),
-        this.fs.copy('swagger/index.html', './swagger/index.html'),
-        this.fs.copy('swagger/oauth2-redirect.html', './swagger/oauth2-redirect.html'),
-        this.fs.copy('swagger/protocol.swagger.json', './swagger/protocol.swagger.json'),
-        this.fs.copy('swagger/swagger-ui-bundle.js', './swagger/swagger-ui-bundle.js'),
-        this.fs.copy('swagger/swagger-ui-bundle.js.map', './swagger/swagger-ui-bundle.js.map'),
-        this.fs.copy('swagger/swagger-ui-standalone-preset.js', './swagger/swagger-ui-standalone-preset.js'),
-        this.fs.copy('swagger/swagger-ui-standalone-preset.js.map', './swagger/swagger-ui-standalone-preset.js.map'),
-        this.fs.copy('swagger/swagger-ui.css', './swagger/swagger-ui.css'),
-        this.fs.copy('swagger/swagger-ui.css.map', './swagger/swagger-ui.css.map'),
-        this.fs.copy('swagger/swagger-ui.js', './swagger/swagger-ui.js'),
-        this.fs.copy('swagger/swagger-ui.js.map', './swagger/swagger-ui.js.map'),
+        this.fs.copy(this.templatePath('swagger/favicon-16x16.png'), './swagger/favicon-16x16.png'),
+        this.fs.copy(this.templatePath('swagger/favicon-32x32.png'), './swagger/favicon-32x32.png'),
+        this.fs.copy(this.templatePath('swagger/index.html'), './swagger/index.html'),
+        this.fs.copy(this.templatePath('swagger/oauth2-redirect.html'), './swagger/oauth2-redirect.html'),
+        this.fs.copy(this.templatePath('swagger/protocol.swagger.json'), './swagger/protocol.swagger.json'),
+        this.fs.copy(this.templatePath('swagger/swagger-ui-bundle.js'), './swagger/swagger-ui-bundle.js'),
+        this.fs.copy(this.templatePath('swagger/swagger-ui-bundle.js.map'), './swagger/swagger-ui-bundle.js.map'),
+        this.fs.copy(this.templatePath('swagger/swagger-ui-standalone-preset.js'), './swagger/swagger-ui-standalone-preset.js'),
+        this.fs.copy(this.templatePath('swagger/swagger-ui-standalone-preset.js.map'), './swagger/swagger-ui-standalone-preset.js.map'),
+        this.fs.copy(this.templatePath('swagger/swagger-ui.css'), './swagger/swagger-ui.css'),
+        this.fs.copy(this.templatePath('swagger/swagger-ui.css.map'), './swagger/swagger-ui.css.map'),
+        this.fs.copy(this.templatePath('swagger/swagger-ui.js'), './swagger/swagger-ui.js'),
+        this.fs.copy(this.templatePath('swagger/swagger-ui.js.map'), './swagger/swagger-ui.js.map'),
         // copy vendor
-        this.fs.copy('vendor/vendor.json', './vendor/vendor.json'),
+        this.fs.copy(this.templatePath('vendor/vendor.json'), './vendor/vendor.json'),
         // copy main dir
-        this.fs.copy('.gitignore', './.gitignore'),
-        this.fs.copy('docker-test.sh', './docker-test.sh'),
-        this.fs.copy('version', './version'),
+        this.fs.copy(this.templatePath('.gitignore'), './.gitignore'),
+        this.fs.copy(this.templatePath('docker-test.sh'), './docker-test.sh'),
+        this.fs.copy(this.templatePath('version'), './version'),
          this.fs.copyTpl(
             this.templatePath('README.md'),
             this.destinationPath('./README.md'),
