@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "A generator for REST/gRPC services in Golang",
   "files": [
-    "server"
+    "generators/server"
   ],
   "main": "generators/app/index.js",
   "scripts": {
@@ -12,11 +12,20 @@
   "author": "David Sudia",
   "license": "ISC",
   "keywords": [
-    "yeoman-generator"
+    "yeoman-generator",
+    "go",
+    "grpc"
   ],
+  "repository": {
+    "type": "git",
+    "url": "git@jaxf-github.fanatics.corp:apparel/generator-branded-go-service"
+  },
   "dependencies": {
     "chalk": "^1.1.3",
     "yeoman-generator": "^1.1.1",
     "yosay": "^2.0.0"
+  },
+  "publishConfig": {
+    "registry": "http://repo.fanaticslabs.com/artifactory/api/npm/npm-dev-local"
   }
 }
