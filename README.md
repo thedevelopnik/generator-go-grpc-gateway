@@ -24,6 +24,7 @@ Steps 1 - 4 only need to be done once.
     * `$ go get -u github.com/grpc-ecosystem/grpc-gateway/protoc-gen-swagger`
 1. Run the generator in the directory in your $GOPATH you want the project
     * `yo branded-go-service:server`
+1. change name of gitignore file to .gitignore (yeoman has issues with gitignores)
 1. Modify the .proto file to match your desired API contract.
 1. Generate Go code
     * ```sh
