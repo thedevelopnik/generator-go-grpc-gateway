@@ -1,6 +1,6 @@
 const util = require('util')
 const path = require('path')
-const generators = require('yeoman-generator')
+const Generator = require('yeoman-generator')
 const chalk = require('chalk')
 const yosay = require('yosay')
 
