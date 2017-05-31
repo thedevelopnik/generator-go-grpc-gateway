@@ -65,7 +65,7 @@ module.exports = class extends Generator {
         // copy vendor
         this.fs.copy(this.templatePath('vendor/vendor.json'), './vendor/vendor.json'),
         // copy main dir
-        this.fs.copy(this.templatePath('gitignore'), './gitignore'),
+        this.fs.copy(this.templatePath('gitignore'), './.gitignore'),
         this.fs.copy(this.templatePath('docker-test.sh'), './docker-test.sh'),
         this.fs.copy(this.templatePath('version'), './version'),
          this.fs.copyTpl(

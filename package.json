@@ -1,6 +1,6 @@
 {
   "name": "generator-branded-go-service",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "A generator for REST/gRPC services in Golang",
   "files": [
     "generators/server"
