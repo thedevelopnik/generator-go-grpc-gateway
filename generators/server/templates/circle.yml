@@ -7,17 +7,8 @@ machine:
     GOPATH: /home/ubuntu/go
     PATH: '/usr/local/go/bin:/home/ubuntu/go/bin:$PATH'
     ROOTPATH: /home/ubuntu/go/src/jaxf-github.fanatics.corp/apparel/<%= appname %>
-    http_proxy: http://proxy-dev.frg.tech:3128
-    https_proxy: http://proxy-dev.frg.tech:3128
     no_proxy: 127.0.0.1,169.254.169.254,.fanaticslabs.com
     HEALTH_CHECK_LOCATION: /api/v1/version
-
-  pre:
-  # install docker 1.10, set its proxies
-  - curl -sSL https://s3.amazonaws.com/circle-downloads/install-circleci-docker.sh | bash -s -- 1.10.0
-  - echo "export http_proxy=http://proxy-dev.frg.tech:3128" | sudo tee -a /etc/default/docker
-  - echo "export https_proxy=http://proxy-dev.frg.tech:3128" | sudo tee -a /etc/default/docker
-  - echo "export no_proxy=127.0.0.1" | sudo tee -a /etc/default/docker
 
   post:
     - mkdir -p download
